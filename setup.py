@@ -4,15 +4,16 @@ except ImportError:
     from distutils.core import setup
 
 config = {
-    'description': 'An implementation a basic PCFG parser/scorer in Python',
+    'description': 'A PageRank-style node-centrality algorithm for \
+    ranking vertices (nodes) in an arbitrary weighted digraph.',
     'author': 'Arthur Tilley',
-    'url': 'https://github.com/aetilley/pcfg',
+    'url': 'https://github.com/aetilley/pyrron',
     'author_email': 'aetilley@gmail.com',
     'version': '0.1',
-    'install requires': ['nose'],
-    'packages': ['pcfg'],
+    'install requires': [] #['nose'],
+    'packages': ['pyrron'],
     'scripts': [],
-    'name': 'pcfg'
+    'name': 'pyrron'
 }
 
 setup(**config)
