@@ -85,5 +85,5 @@ def compute_w_a_matrix(w_a_list):
 def distribution_from_vector(vector, vertex_list):
     dist = dict()
     for i in range(len(vertex_list)):
-        dist[vertex_list[i]] = vector[i]
+        dist[vertex_list[i]] = vector[i,0]
     return dist
