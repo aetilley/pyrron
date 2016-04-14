@@ -83,17 +83,13 @@ def compute_w_a_matrix(w_a_list):
             
         
 def distribution_from_vector(vector, vertex_list):
+    """
+    Returns a dictionary giving the probability of a vertex in the vertex list 
+    the probability of which is the corresponding element in vector
+    """
     dist = dict()
     size = len(vertex_list)
-    print("size is", size)
     vector = vector.reshape((size,))
-    print("Vector is ")
-    print(vector)
-    print("Vector.shape is")
-    print(vector.shape)
-    print("vertex_list is")
-    print(vertex_list)
-    
     for i in range(size):
         dist[vertex_list[i]] = vector[i]
     return dist

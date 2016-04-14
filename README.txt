@@ -49,7 +49,7 @@ ii) By computing the Perron right-eigenvector of M_final.
 
 Example:
 
-In [1]: from pyrron import *
+In [1]: from pyrron import Pyrron
 
 In [2]: from w_a_list import Weighted_Adj_List
 
