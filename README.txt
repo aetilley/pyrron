@@ -1,7 +1,12 @@
 A PageRank-style node-centrality algorithm for ranking vertices (nodes) in an arbitrary
 weighted digraph.
 
-Recall the PageRank model postulates a surfer clicking random links with uniform probability of clicking any given link on a page and with the assumption that if the surfer enters a dead end, on the next iteration they re-materialize at another page with uniform probability.  Furthermore there is a damping coefficient d, such that at any iteration the user has probability (1-d) of "stopping," meaning that they re-materialize at another page with uniform probability at the next iteration.
+Recall the PageRank model postulates a surfer clicking random links with uniform probability of
+clicking any given link on a page and with the assumption that if the surfer enters a dead end,
+on the next iteration they re-materialize at another page with uniform probability.
+Furthermore there is a damping coefficient d, such that at any iteration the user has
+probability (1-d) of "stopping," meaning that they re-materialize at another page with
+uniform probability at the next iteration.
 
 Pyrron generalizes this by not assuming that the transition probabilities are uniform across
 the outgoing edges.  Thus instead of taking a naked digraph for input, it takes a weighted digraph.
@@ -10,8 +15,9 @@ there are no loops.  The Pyrron constructor will consume any digraph with non-ne
 numeric edge weights.)
 
 More specifically:
-i) After formating the input into a weighted adjacency matrix called M_given, we construct M_norm by
-dividing each column of M_given by its sum and replacing columns of zeros in M_norm by (1/N)*ones(N).
+i) After formating the input into a weighted adjacency matrix called M_given,
+we construct M_norm by dividing each column of M_given by its sum and replacing columns of
+zeros in M_norm by (1/N)*ones(N).
 
 ii) We then construct M_final by scaling each entry of M_norm by a damping coefficient d in (0,1)
 (so that the columns now sum to d) and adding (1-d)/N to each element.
