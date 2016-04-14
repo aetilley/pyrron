@@ -56,13 +56,13 @@ def compute_perron_vector(matrix):
     return perron
 
 def power_method(M_final, tolerance = .001, init = None):
-    size = M_final.shape(0)
+    size = M_final.shape[0]
     init = init or (1 / size) * np.ones(size)
     dist_old = init
     dist_new = M_final.dot(dist_old)
     while distance(dist_old, dist_new) > tolerance:
         dist_old = dist_new
-        dist_new = M_final(dist_old)
+        dist_new = M_final.dot(dist_old)
     scaled_result = dist_new / dist_new.sum()
     return scaled_result
 
@@ -85,8 +85,15 @@ def compute_w_a_matrix(w_a_list):
 def distribution_from_vector(vector, vertex_list):
     dist = dict()
     size = len(vertex_list)
-    vector.reshape((size,))
-    print("Vector is",vector,"vector_list is",vertex_list)
+    print("size is", size)
+    vector = vector.reshape((size,))
+    print("Vector is ")
+    print(vector)
+    print("Vector.shape is")
+    print(vector.shape)
+    print("vertex_list is")
+    print(vertex_list)
+    
     for i in range(size):
-        dist[vertex_list[i]] = vector[i,0]
+        dist[vertex_list[i]] = vector[i]
     return dist

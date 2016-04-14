@@ -26,7 +26,7 @@ b) Has all positive entries, so Perron's Theorem tells us that:
    b1) The algebraic muliplicity of the eigenvalue 1 is 1 (1 is a simple eigenvalue).
    b2) The eigenvalue 1 is the only eigenvalue on the unit circle.
    b3) There exist unique right and left eigenvectors v and w^T for the eigenvalue 1 such
-   that |v| = |w| = 1.  These are the Perron right and left eigenvector respectively.
+   that |v|_1 = |w|_1 = 1.  These are the Perron right and left eigenvector respectively.
 
 Now recall that the matrices M for which M^k converges are precisely those for which
 
@@ -44,19 +44,22 @@ ii) By computing the Perron right-eigenvector of M_final.
 
 Example:
 
-In [1]: from w_a_list import Weighted_Adj_List
+In [1]: from pyrron import *
 
-In [2]: a_list = {"a":{"b", "c"}, "b":{"c"}}
+In [2]: from w_a_list import Weighted_Adj_List
 
-In [3]: weights = {('a', 'b'):.25, ('a', 'c'):1, ('b','c'):13}
+In [3]: a_list = {"a":{"b", "c"}, "b":{"c"}}
 
-In [4]: wal = Weighted_Adj_List(a_list, weights)
+In [4]: weights = {('a', 'b'):.25, ('a', 'c'):1, ('b','c'):13}
 
-In [5]: from pyrron import *
+In [5]: wal = Weighted_Adj_List(a_list, weights)
 
 In [6]: p = Pyrron(wal)
 
 In [7]: p.distribution
 Out[7]: {'a': 0.20641965115078956, 'b': 0.24151099184642372, 'c': 0.5520693570027867}
 
+In [8]: q = Pyrron(wal, method='iterative')
 
+In [9]: q.distribution
+Out[9]: {'a': 0.20628784190538035, 'b': 0.24142762834334819, 'c': 0.55228452975127151}
