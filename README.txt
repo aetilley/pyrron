@@ -9,22 +9,22 @@ probability (1-d) of "stopping," meaning that they re-materialize at another pag
 uniform probability at the next iteration.
 
 Pyrron generalizes this by not assuming that the transition probabilities are uniform across
-the outgoing edges.  Thus instead of taking a naked digraph for input, it takes a weighted digraph.
-(Another generalization is that it is generally assumed that the web-graph is pruned so that
-there are no loops.  The Pyrron constructor will consume any digraph with non-negative
-numeric edge weights.)
+the outgoing edges, and by allowing loops.  Thus instead of taking a naked (unweighted),
+simple (not loops or multiple edges between pairs of vertices) digraph for input,
+the Pyrron constructor takes any non-negatively weighted digraph (which may have loops,
+but no multiple edges). 
 
 More specifically:
 i) After formating the input into a weighted adjacency matrix called M_given,
-we construct M_norm by dividing each column of M_given by its sum and replacing columns of
+we construct M_norm by dividing each non-zero column of M_given by its sum and replacing columns of
 zeros in M_norm by (1/N)*ones(N).
 
 ii) We then construct M_final by scaling each entry of M_norm by a damping coefficient d in (0,1)
-(so that the columns now sum to d) and adding (1-d)/N to each element.
+(so that the columns now sum to d) and then adding (1-d)/N to each element.
 
-We can think of the damping-coefficient d as the probability at any given iteration
-that a given process (travelling along some path in the graph) takes one of the
-available outgoing edges instead of choosing to reset randomly to an arbitrary vertex.
+We can think of the damping-coefficient d as the probability at any given iteration a given
+process, travelling along some path in the graph, continues along one of the available outgoing
+edges instead of choosing to reset randomly to an arbitrary vertex.
 
 Note that M_final
 a) Is column stochastic, so it has maximum eigenvalue 1.
@@ -45,7 +45,6 @@ It follows that we can compute the limiting output distribution either by
 
 i) Approximating the limit of M^k(p_0) as k -> infinity (for some starting distribution p_0) OR
 ii) By computing the Perron right-eigenvector of M_final.
-
 
 
 Example:
