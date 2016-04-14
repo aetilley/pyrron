@@ -15,12 +15,12 @@ the Pyrron constructor takes any non-negatively weighted digraph (which may have
 but no multiple edges). 
 
 More specifically:
-i) After formating the input into a weighted adjacency matrix called M_given,
-we construct M_norm by dividing each non-zero column of M_given by its sum and replacing columns of
+i) After formating the input into a weighted adjacency matrix called M_given, we construct
+M_norm by dividing each non-zero column of M_given by its sum and replacing columns of
 zeros in M_norm by (1/N)*ones(N).
 
-ii) We then construct M_final by scaling each entry of M_norm by a damping coefficient d in (0,1)
-(so that the columns now sum to d) and then adding (1-d)/N to each element.
+ii) We then construct M_final by scaling each entry of M_norm by a damping coefficient
+d in (0,1) (so that the columns now sum to d) and then adding (1-d)/N to each element.
 
 We can think of the damping-coefficient d as the probability at any given iteration a given
 process, travelling along some path in the graph, continues along one of the available outgoing
